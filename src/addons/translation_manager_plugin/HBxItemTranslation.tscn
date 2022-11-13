@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://addons/translation_manager_plugin/icons/icon-exclamation.svg" type="Texture" id=1]
+[ext_resource path="res://addons/translation_manager_plugin/icons/icon-language.svg" type="Texture" id=2]
+[ext_resource path="res://addons/translation_manager_plugin/HBxItemTranslation.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="ItemTranslation" type="HBoxContainer"]
+margin_right = 992.0
+margin_bottom = 95.0
+custom_constants/separation = 10
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="IconNormal" type="TextureRect" parent="."]
+margin_right = 25.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 25, 0 )
+texture = ExtResource( 2 )
+stretch_mode = 4
+
+[node name="IconAlert" type="TextureRect" parent="."]
+visible = false
+margin_right = 25.0
+margin_bottom = 95.0
+rect_min_size = Vector2( 25, 0 )
+texture = ExtResource( 1 )
+stretch_mode = 4
+
+[node name="VBxString1" type="VBoxContainer" parent="."]
+margin_left = 35.0
+margin_right = 992.0
+margin_bottom = 95.0
+size_flags_horizontal = 3
+
+[node name="LblOriginalTxt" type="Label" parent="VBxString1"]
+unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0.611765 )
+margin_right = 957.0
+margin_bottom = 14.0
+clip_text = true
+
+[node name="LineEditTranslation" type="LineEdit" parent="VBxString1"]
+unique_name_in_owner = true
+margin_top = 18.0
+margin_right = 957.0
+margin_bottom = 42.0
+placeholder_text = "Write a translation..."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBxString1"]
+margin_top = 46.0
+margin_right = 957.0
+margin_bottom = 70.0
+custom_constants/separation = 11
+
+[node name="LblKeyStr" type="Label" parent="VBxString1/HBoxContainer"]
+unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0.47451 )
+margin_top = 5.0
+margin_right = 760.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+text = "ItemTranslation"
+
+[node name="CheckBoxRevision" type="CheckBox" parent="VBxString1/HBoxContainer"]
+margin_left = 771.0
+margin_right = 891.0
+margin_bottom = 24.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Need Revision"
+
+[node name="BtnEdit" type="Button" parent="VBxString1/HBoxContainer"]
+margin_left = 902.0
+margin_right = 938.0
+margin_bottom = 24.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Edit"
+
+[node name="VSeparator" type="VSeparator" parent="VBxString1/HBoxContainer"]
+margin_left = 949.0
+margin_right = 957.0
+margin_bottom = 24.0
+custom_constants/separation = 8
+custom_styles/separator = SubResource( 1 )
+
+[connection signal="toggled" from="VBxString1/HBoxContainer/CheckBoxRevision" to="." method="_on_CheckBoxRevision_toggled"]

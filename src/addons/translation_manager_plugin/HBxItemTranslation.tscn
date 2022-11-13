@@ -49,6 +49,7 @@ margin_top = 18.0
 margin_right = 957.0
 margin_bottom = 42.0
 placeholder_text = "Write a translation..."
+caret_blink = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBxString1"]
 margin_top = 46.0
@@ -88,4 +89,8 @@ margin_bottom = 24.0
 custom_constants/separation = 8
 custom_styles/separator = SubResource( 1 )
 
+[connection signal="focus_entered" from="VBxString1/LineEditTranslation" to="." method="_on_LineEditTranslation_focus_entered"]
+[connection signal="focus_exited" from="VBxString1/LineEditTranslation" to="." method="_on_LineEditTranslation_focus_exited"]
+[connection signal="text_changed" from="VBxString1/LineEditTranslation" to="." method="_on_LineEditTranslation_text_changed"]
 [connection signal="toggled" from="VBxString1/HBoxContainer/CheckBoxRevision" to="." method="_on_CheckBoxRevision_toggled"]
+[connection signal="pressed" from="VBxString1/HBoxContainer/BtnEdit" to="." method="_on_BtnEdit_pressed"]

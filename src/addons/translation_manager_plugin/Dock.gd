@@ -6,6 +6,8 @@ const TranslationItem = preload("res://addons/translation_manager_plugin/HBxItem
 var _translations : Dictionary
 var _langs : Array
 
+var _selected_str_key : String
+
 var _current_file : String
 var _current_path : String
 
@@ -112,6 +114,12 @@ func _on_OpenedFilesList_item_selected(index: int) -> void:
 	## limpiar listas de langs
 	get_node("%RefLangItemList").clear()
 	get_node("%TransLangItemList").clear()
+	
+	
+	## no hay nada que mostrar
+	if _translations.size() == 0 or _langs.size() == 0:
+		return
+
 	## añadir los idiomas que contiene el archivo
 	var i : int = 0
 	for l in _langs:
@@ -128,6 +136,19 @@ func _on_OpenedFilesList_item_selected(index: int) -> void:
 
 ## se cambiado el idioma seleccionado en los itemlist
 func _on_LangItemList_item_selected(_index: int) -> void:
+	var extra_data_path : String = _current_path+"/translation_manager_extra_data.ini"
+	var Conf := ConfigFile.new()
+	
+	Conf.load(extra_data_path)
+	
+	## si hay seleccionado ambos idiomas iguales, pero hay mas de un idioma
+	## seleccionar el siguient idioma en translangitemlist
+	if (
+		(get_node("%RefLangItemList").get_selected_id() == get_node("%TransLangItemList").get_selected_id())
+		and _langs.size() > 1
+	):
+		get_node("%TransLangItemList").select(1)
+	
 	## limpiar lista de traducciones en pantalla
 	for t in get_node("%VBxTranslations").get_children():
 		t.queue_free()
@@ -137,7 +158,65 @@ func _on_LangItemList_item_selected(_index: int) -> void:
 		
 		TransInstance.key_str = t_key
 		
+		TransInstance.connect("edit_requested", self, "_on_Translation_edit_requested")
+		
 		TransInstance.orig_txt = _translations[t_key][get_selected_lang("ref")]
 		TransInstance.trans_txt = _translations[t_key][get_selected_lang("trans")]
 		
+		if Conf.has_section_key(t_key, "need_rev") == false:
+			Conf.set_value(t_key, "need_rev", false)
+		else:
+			TransInstance.need_revision = Conf.get_value(t_key, "need_rev", false)
+			
+		if Conf.has_section_key(t_key, "annotations") == false:
+			Conf.set_value(t_key, "annotations", "")
+		else:
+			TransInstance.annotations = Conf.get_value(t_key, "annotations", false)
+		
 		get_node("%VBxTranslations").add_child(TransInstance)
+
+	Conf.save(extra_data_path)
+
+## se clickó editar de la traduccion seleccionada
+func _on_Translation_edit_requested(TransNodeName:String) -> void:
+	
+	var TranslationObj = get_node("%VBxTranslations").get_node(TransNodeName)
+	
+	get_node("%CTCheckEditKey").pressed = false
+	_on_CTCheckEditKey_toggled(false)
+	get_node("%CTCheckEnableOriginalTxt").pressed = false
+	get_node("%TxtOriginalTxt").readonly = true
+	
+	## setear datos
+	
+	get_node("%LblOriginalTxt").text = "[%s] Original Text..." % [get_selected_lang("ref").capitalize()]
+	get_node("%LblTranslation").text = "[%s] Translation..." % [get_selected_lang("trans").capitalize()]
+	
+	_selected_str_key = TranslationObj.key_str
+	
+	get_node("%CTLineEdit").text = TranslationObj.key_str
+	get_node("%TxtOriginalTxt").text = TranslationObj.orig_txt
+	get_node("%TxtTranslation").text = TranslationObj.trans_txt
+	get_node("%TxtAnnotations").text = TranslationObj.annotations
+	
+	get_node("%DialogEditTranslation").popup_centered()
+	
+	get_node("%TxtTranslation").grab_focus()
+
+## habilitar edicion o eliminacion de stringkey y toda su traduccion
+func _on_CTCheckEditKey_toggled(button_pressed: bool) -> void:
+	get_node("%CTLineEdit").editable = button_pressed
+	get_node("%CTBtnDeleteKey").disabled = ! button_pressed
+
+
+## eliminar traduccion en base al string key desde el popup edit
+func _on_CTBtnDeleteKey_pressed() -> void:
+	#_selected_str_key
+	get_node("%DialogEditTranslation").hide()
+## guardar datos del string key desde el popup edit
+func _on_CTBtnSaveKey_pressed() -> void:
+	#_selected_str_key
+	get_node("%DialogEditTranslation").hide()
+
+func _on_CTCheckEnableOriginalTxt_toggled(button_pressed: bool) -> void:
+	get_node("%TxtOriginalTxt").readonly = ! button_pressed

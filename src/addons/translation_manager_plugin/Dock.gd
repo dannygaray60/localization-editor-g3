@@ -159,6 +159,7 @@ func _on_LangItemList_item_selected(_index: int) -> void:
 		TransInstance.key_str = t_key
 		
 		TransInstance.connect("edit_requested", self, "_on_Translation_edit_requested")
+		TransInstance.connect("need_revision_check_pressed", self, "_on_Translation_need_revision_check_pressed")
 		
 		TransInstance.orig_txt = _translations[t_key][get_selected_lang("ref")]
 		TransInstance.trans_txt = _translations[t_key][get_selected_lang("trans")]
@@ -189,8 +190,8 @@ func _on_Translation_edit_requested(TransNodeName:String) -> void:
 	
 	## setear datos
 	
-	get_node("%LblOriginalTxt").text = "[%s] Original Text..." % [get_selected_lang("ref").capitalize()]
-	get_node("%LblTranslation").text = "[%s] Translation..." % [get_selected_lang("trans").capitalize()]
+	get_node("%LblOriginalTxt").text = "[%s] Original Text" % [get_selected_lang("ref").capitalize()]
+	get_node("%LblTranslation").text = "[%s] Translation" % [get_selected_lang("trans").capitalize()]
 	
 	_selected_str_key = TranslationObj.key_str
 	
@@ -202,6 +203,14 @@ func _on_Translation_edit_requested(TransNodeName:String) -> void:
 	get_node("%DialogEditTranslation").popup_centered()
 	
 	get_node("%TxtTranslation").grab_focus()
+
+## se clickeó check de revision
+func _on_Translation_need_revision_check_pressed(key:String,pressed:bool) -> void:
+	var extra_data_path : String = _current_path+"/translation_manager_extra_data.ini"
+	var Conf = ConfigFile.new()
+	Conf.load(extra_data_path)
+	Conf.set_value(key, "need_rev", pressed)
+	Conf.save(extra_data_path)
 
 ## habilitar edicion o eliminacion de stringkey y toda su traduccion
 func _on_CTCheckEditKey_toggled(button_pressed: bool) -> void:
@@ -216,6 +225,7 @@ func _on_CTBtnDeleteKey_pressed() -> void:
 ## guardar datos del string key desde el popup edit
 func _on_CTBtnSaveKey_pressed() -> void:
 	#_selected_str_key
+	#var TranslationObj = get_node("%VBxTranslations").get_node(_selected_str_key)
 	get_node("%DialogEditTranslation").hide()
 
 func _on_CTCheckEnableOriginalTxt_toggled(button_pressed: bool) -> void:

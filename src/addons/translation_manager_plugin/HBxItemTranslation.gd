@@ -2,6 +2,7 @@ tool
 extends HBoxContainer
 
 signal edit_requested(NodeName)
+signal need_revision_check_pressed(StringKey, pressed)
 #signal extra_data_changed(NodeName)
 
 var has_translation : bool
@@ -49,7 +50,7 @@ func _on_CheckBoxRevision_toggled(button_pressed: bool) -> void:
 		$IconNormal.visible = true
 		$IconAlert.visible = false
 	
-	#emit_signal("extra_data_changed", name)
+	emit_signal("need_revision_check_pressed", key_str, need_revision)
 
 
 func _on_LineEditTranslation_focus_entered() -> void:
@@ -59,6 +60,10 @@ func _on_LineEditTranslation_focus_exited() -> void:
 
 
 func _on_LineEditTranslation_text_changed(new_text: String) -> void:
+	
+	get_node("%TimerAfterTextInput").start()
+	get_node("%BtnEdit").disabled = true
+	get_node("%CheckBoxRevision").disabled = true
 	
 	new_text = new_text.replace(" ", "")
 	
@@ -72,3 +77,8 @@ func _on_LineEditTranslation_text_changed(new_text: String) -> void:
 
 func _on_BtnEdit_pressed() -> void:
 	emit_signal("edit_requested", name)
+
+## milisegundos despues de que el texto del lineedit haya cambiado
+func _on_TimerAfterTextInput_timeout() -> void:
+	get_node("%BtnEdit").disabled = false
+	get_node("%CheckBoxRevision").disabled = false

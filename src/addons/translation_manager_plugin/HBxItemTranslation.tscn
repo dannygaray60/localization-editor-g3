@@ -67,6 +67,7 @@ size_flags_horizontal = 3
 text = "ItemTranslation"
 
 [node name="CheckBoxRevision" type="CheckBox" parent="VBxString1/HBoxContainer"]
+unique_name_in_owner = true
 margin_left = 771.0
 margin_right = 891.0
 margin_bottom = 24.0
@@ -75,6 +76,7 @@ enabled_focus_mode = 0
 text = "Need Revision"
 
 [node name="BtnEdit" type="Button" parent="VBxString1/HBoxContainer"]
+unique_name_in_owner = true
 margin_left = 902.0
 margin_right = 938.0
 margin_bottom = 24.0
@@ -89,8 +91,14 @@ margin_bottom = 24.0
 custom_constants/separation = 8
 custom_styles/separator = SubResource( 1 )
 
+[node name="TimerAfterTextInput" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.3
+one_shot = true
+
 [connection signal="focus_entered" from="VBxString1/LineEditTranslation" to="." method="_on_LineEditTranslation_focus_entered"]
 [connection signal="focus_exited" from="VBxString1/LineEditTranslation" to="." method="_on_LineEditTranslation_focus_exited"]
 [connection signal="text_changed" from="VBxString1/LineEditTranslation" to="." method="_on_LineEditTranslation_text_changed"]
 [connection signal="toggled" from="VBxString1/HBoxContainer/CheckBoxRevision" to="." method="_on_CheckBoxRevision_toggled"]
 [connection signal="pressed" from="VBxString1/HBoxContainer/BtnEdit" to="." method="_on_BtnEdit_pressed"]
+[connection signal="timeout" from="TimerAfterTextInput" to="." method="_on_TimerAfterTextInput_timeout"]

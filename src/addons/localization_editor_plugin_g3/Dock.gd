@@ -121,7 +121,7 @@ func start_search() -> void:
 	
 	for tp in get_node("%VBxTranslations").get_children():
 		tp.visible = true
-		##TODO busqueda
+		## busqueda por texto
 		if searchtxt.empty()== false:
 			if (
 				(get_node("%CheckBoxSearchKeyID").pressed and searchtxt in tp.key_str.to_lower())
@@ -144,6 +144,7 @@ func clear_search() -> void:
 	get_node("%LineEditSearchBox").text = ""
 	get_node("%CheckBoxSearchKeyID").pressed = true
 	get_node("%CheckBoxSearchRefText").pressed = true
+	get_node("%CheckBoxSearchTransText").pressed = true
 	get_node("%CheckBoxHideCompleted").pressed = false
 	get_node("%CheckBoxHideNoNeedRev").pressed = false
 
@@ -482,32 +483,71 @@ func _on_CTCheckEditKey_toggled(button_pressed: bool) -> void:
 func _on_CTBtnDeleteKey_pressed() -> void:
 	var TranslationObj = get_node("%VBxTranslations").get_node(_selected_translation_panel)
 	
+	var extra_data_path : String = _current_path+"/translation_manager_extra_data.ini"
+	var TransConf = ConfigFile.new()
+	TransConf.load(extra_data_path)
+	
 	## eliminar en diccionario
 	_translations.erase(TranslationObj.key_str)
+	
+	## eliminar en configuracion
+	if TransConf.has_section(TranslationObj.key_str):
+		TransConf.erase_section(TranslationObj.key_str)
+		TransConf.save(extra_data_path)
+	
 	## eliminar panel
 	TranslationObj.queue_free()
 	
 	## mostrar indicacion que hay cambios sin guardar
-	get_node("%LblCurrentFTitle").text = "(*)" + get_node("%LblCurrentFTitle").text
+	#get_node("%LblCurrentFTitle").text = "(*)" + get_node("%LblCurrentFTitle").text
 	
 	_selected_translation_panel = ""
 	get_node("%DialogEditTranslation").hide()
 
+	_on_BtnSaveFile_pressed()
 
 ## guardar datos del string key desde el popup edit
 func _on_CTBtnSaveKey_pressed() -> void:
+	var extra_data_path : String = _current_path+"/translation_manager_extra_data.ini"
+	var TransConf = ConfigFile.new()
+	TransConf.load(extra_data_path)
+	
 	var TranslationObj = get_node("%VBxTranslations").get_node(_selected_translation_panel)
 	
 	## si el campo del strkey esta checkeado
 	## renombrar el keystr a uno nuevo
 	if get_node("%CTCheckEditKey").pressed == true:
+		
+		if get_node("%CTLineEdit").text in _translations.keys():
+			OS.alert("The String Key [%s] is already in use"%[get_node("%CTLineEdit").text])
+			return
+		
+		var conf_values : Array
 		## crear una nueva entrada con el nuevo key, copiando los valores del anterior
 		_translations[get_node("%CTLineEdit").text] = _translations[TranslationObj.key_str]
+		##
+		if TransConf.has_section(TranslationObj.key_str):
+			for c in TransConf.get_section_keys(TranslationObj.key_str):
+				## guardar [confkey,value]
+				conf_values.append(
+					[c, TransConf.get_value(TranslationObj.key_str,c)]
+				)
+		
 		## borrar el antiguo
 		_translations.erase(TranslationObj.key_str)
+		##
+		if TransConf.has_section(TranslationObj.key_str):
+			TransConf.erase_section(TranslationObj.key_str)
+		
 		## setear el nuevo keystr al panel de la traduccion
 		TranslationObj.key_str = get_node("%CTLineEdit").text
-		
+		##
+		if conf_values.empty() == false:
+			for c in conf_values:
+				TransConf.set_value(
+					get_node("%CTLineEdit").text,#seccion
+					c[0],c[1]
+				)
 	
 	## si el check del texto original está checkeado
 	if get_node("%CTCheckEnableOriginalTxt").pressed == true:
@@ -530,9 +570,6 @@ func _on_CTBtnSaveKey_pressed() -> void:
 	
 	## guardar anotaciones
 	TranslationObj.annotations = get_node("%TxtAnnotations").text
-	var extra_data_path : String = _current_path+"/translation_manager_extra_data.ini"
-	var TransConf = ConfigFile.new()
-	TransConf.load(extra_data_path)
 	TransConf.set_value(TranslationObj.key_str, "annotations", TranslationObj.annotations)
 	TransConf.save(extra_data_path)
 	
@@ -869,6 +906,14 @@ func _on_CheckBoxSearch_pressed() -> void:
 		and get_node("%CheckBoxSearchTransText").pressed == false
 	):
 		get_node("%CheckBoxSearchKeyID").pressed = true
+	
+	## si al menos de uno de los checks está desactivado
+	if (
+		get_node("%CheckBoxSearchKeyID").pressed == false
+		or get_node("%CheckBoxSearchRefText").pressed == false
+		or get_node("%CheckBoxSearchTransText").pressed == false
+	):
+		get_node("%BtnClearSearch").disabled = false
 	
 	start_search()
 

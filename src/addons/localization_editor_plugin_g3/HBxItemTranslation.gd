@@ -114,6 +114,8 @@ func _on_LineEditTranslation_text_changed(new_text: String) -> void:
 	if _is_ready_for_emit_signals == true:
 		emit_signal("text_updated", name, key_str, get_node("%LineEditTranslation").text)
 
+	trans_txt = new_text
+
 func _on_BtnEdit_pressed() -> void:
 	emit_signal("edit_requested", name)
 

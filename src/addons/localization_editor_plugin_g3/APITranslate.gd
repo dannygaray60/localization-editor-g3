@@ -38,7 +38,7 @@ func http_request_completed(result, response_code, headers, body, http_request, 
 			"ApiTranslate error #" + str(result), "HttpRequest Error"
 		)
 		return
-	
+
 	var result_body := JSON.parse(body.get_string_from_utf8())
 
 	emit_signal(

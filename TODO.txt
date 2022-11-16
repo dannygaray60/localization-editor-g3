@@ -1,0 +1,5 @@
+la traduccion de google no funciona
+
+al cambiar datos en los translate panel, estos cambios no aparecen en el popup de editar panel y tampoco funciona con la barra de busqueda, solo hasta que recargo el archivo
+
+al eliminar traduccion eliminar la referencia en el archivo de config

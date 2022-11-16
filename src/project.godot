@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "CSVLoader",
 "language": "GDScript",
-"path": "res://addons/translation_manager_plugin/csv_loader.gd"
+"path": "res://addons/localization_editor_plugin_g3/csv_loader.gd"
 } ]
 _global_script_class_icons={
 "CSVLoader": ""
@@ -20,13 +20,13 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Translation Manager"
-run/main_scene="res://addons/translation_manager_plugin/Dock.tscn"
+config/name="Localization Editor"
+run/main_scene="res://addons/localization_editor_plugin_g3/Dock.tscn"
 config/icon="res://icon.svg"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/godot-plugin-refresher/plugin.cfg", "res://addons/translation_manager_plugin/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/godot-plugin-refresher/plugin.cfg", "res://addons/localization_editor_plugin_g3/plugin.cfg" )
 
 [gui]
 
@@ -41,4 +41,3 @@ common/enable_pause_aware_picking=true
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_environment="res://default_env.tres"

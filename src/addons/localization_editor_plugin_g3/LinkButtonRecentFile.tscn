@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://addons/localization_editor_plugin_g3/LinkButtonRecentFile.gd" type="Script" id=1]
+[ext_resource path="res://addons/localization_editor_plugin_g3/Ubuntu-Regular.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 2 )
+
+[node name="LinkButton" type="HBoxContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+alignment = 2
+script = ExtResource( 1 )
+
+[node name="Lnk" type="LinkButton" parent="."]
+modulate = Color( 0.745098, 0.745098, 0.745098, 1 )
+margin_right = 48.0
+margin_bottom = 40.0
+size_flags_horizontal = 8
+custom_fonts/font = SubResource( 1 )
+enabled_focus_mode = 0
+text = "Test"
+underline = 1
+
+[node name="BtnRemove" type="Button" parent="."]
+margin_left = 52.0
+margin_right = 72.0
+margin_bottom = 40.0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "X"
+flat = true
+
+[connection signal="pressed" from="Lnk" to="." method="_on_Lnk_pressed"]
+[connection signal="pressed" from="BtnRemove" to="." method="_on_BtnRemove_pressed"]

@@ -1,0 +1,32 @@
+[gd_resource type="DynamicFont" load_steps=15 format=2]
+
+[ext_resource path="res://addons/localization_editor_plugin_g3/extra_fonts/NotoSansThaiUI_Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://addons/localization_editor_plugin_g3/extra_fonts/NotoSansTeluguUI_Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://addons/localization_editor_plugin_g3/extra_fonts/NotoSansHebrew_Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://addons/localization_editor_plugin_g3/extra_fonts/NotoSansOriyaUI_Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://addons/localization_editor_plugin_g3/extra_fonts/NotoSansSinhalaUI_Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://addons/localization_editor_plugin_g3/extra_fonts/NotoSansTamilUI_Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://addons/localization_editor_plugin_g3/extra_fonts/NotoSansMalayalamUI_Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://addons/localization_editor_plugin_g3/extra_fonts/NotoSansGeorgian_Regular.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://addons/localization_editor_plugin_g3/extra_fonts/DroidSansJapanese.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://addons/localization_editor_plugin_g3/extra_fonts/DroidSansFallback.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://addons/localization_editor_plugin_g3/extra_fonts/NotoSansDevanagariUI_Regular.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://addons/localization_editor_plugin_g3/extra_fonts/NotoNaskhArabicUI_Regular.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://addons/localization_editor_plugin_g3/extra_fonts/NotoSans-Regular.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://addons/localization_editor_plugin_g3/extra_fonts/NotoSansBengali_Regular.ttf" type="DynamicFontData" id=14]
+
+[resource]
+font_data = ExtResource( 13 )
+fallback/0 = ExtResource( 10 )
+fallback/1 = ExtResource( 9 )
+fallback/2 = ExtResource( 12 )
+fallback/3 = ExtResource( 14 )
+fallback/4 = ExtResource( 11 )
+fallback/5 = ExtResource( 8 )
+fallback/6 = ExtResource( 3 )
+fallback/7 = ExtResource( 7 )
+fallback/8 = ExtResource( 4 )
+fallback/9 = ExtResource( 5 )
+fallback/10 = ExtResource( 6 )
+fallback/11 = ExtResource( 2 )
+fallback/12 = ExtResource( 1 )

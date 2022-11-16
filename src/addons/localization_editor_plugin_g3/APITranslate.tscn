@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/localization_editor_plugin_g3/APITranslate.gd" type="Script" id=1]
+
+[node name="ApiTranslate" type="Node"]
+script = ExtResource( 1 )

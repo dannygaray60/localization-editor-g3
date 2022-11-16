@@ -605,6 +605,12 @@ func _on_BtnSaveFile_pressed() -> void:
 	if err == OK:
 		get_node("%LblCurrentFTitle").text = get_node("%LblCurrentFTitle").text.replace("(*)","")
 
+	if Engine.is_editor_hint() == true:
+		var ep = EditorPlugin.new()
+		ep.get_editor_interface().get_resource_filesystem().scan()
+		ep.free()
+		#get_opened_file()
+
 ## cuando se cierra la ventana de preferencias
 func _on_Preferences_popup_hide() -> void:
 	Conf.set_value("csv", "f_cell", get_node("%TxtSettingFCell").text)

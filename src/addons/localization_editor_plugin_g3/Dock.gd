@@ -88,14 +88,19 @@ func _ready() -> void:
 func load_recent_files_list() -> void:
 	## mostrar archivos recientes
 	var recent_list:Array = Conf.get_value("main","recent_files",[])
+	
 	for n in get_node("%VBxRecentFiles").get_children():
 		n.queue_free()
+	
 	for rl in recent_list:
 		var Btn := LinkBtnFile.instance()
 		Btn.f_path = rl
 		Btn.connect("opened", self, "_OnRecentFile_opened")
 		Btn.connect("removed", self, "_OnRecentFile_removed")
 		get_node("%VBxRecentFiles").add_child(Btn)
+	
+	## mostrar mensaje si lista esta vacia
+	get_node("%LblNoRecentFiles").visible = recent_list.empty()
 
 func _OnRecentFile_opened(f_path:String) -> void:
 	_on_FileDialog_files_selected([f_path])
@@ -292,7 +297,7 @@ func _on_FileDialog_files_selected(paths: PoolStringArray) -> void:
 			)
 			
 			## añadir path a lista de archivos recientes
-			var recent_limit:int = 2
+			var recent_limit:int = 10
 			var recent_list:Array = Conf.get_value("main","recent_files",[])
 			if recent_list.has(p) == false:
 				if recent_list.size() >= recent_limit:
@@ -665,7 +670,7 @@ func _on_CheckBoxSettingReopenFile_toggled(button_pressed: bool) -> void:
 
 func _on_LinkHowToUse_pressed() -> void:
 	##enviar a post de kofi
-	OS.shell_open("https://dannygaray60.itch.io/localization-editor")
+	OS.shell_open("https://ko-fi.com/Post/How-to-use-Localization-Editor-V7V7GF7GH")
 func _on_LinkButtonTwitter_pressed() -> void:
 	OS.shell_open("https://twitter.com/dannygaray60")
 func _on_LinkButtonGithub_pressed() -> void:
@@ -957,3 +962,18 @@ func _on_Dock_resized() -> void:
 		Conf.set_value("main","maximized",OS.window_maximized)
 		Conf.save(_self_data_folder_path+"/translation_manager_conf.ini")
 		
+
+## cerrar archivo abierto
+func _on_BtnCloseFile_pressed() -> void:
+	
+	get_node("%OpenedFilesList").remove_item(
+		get_node("%OpenedFilesList").selected
+	)
+
+	## si no hay mas archivos, cerrar todo
+	if get_node("%OpenedFilesList").get_item_count() == 0:
+		_on_CloseAll()
+	## seleccionar el 1ro
+	else:
+		get_node("%OpenedFilesList").select(0)
+		_on_OpenedFilesList_item_selected(0)

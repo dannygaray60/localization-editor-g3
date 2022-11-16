@@ -1,1 +1,1 @@
-# translation-manager-g3
+# Localization Editor (Translation Tool for .csv files)

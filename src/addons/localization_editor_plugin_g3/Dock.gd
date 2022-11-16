@@ -78,10 +78,12 @@ func _ready() -> void:
 
 	## reabrir el ultimo archivo
 	if get_node("%CheckBoxSettingReopenFile").pressed == true:
-		if Dir.file_exists(
-			Conf.get_value("main", "last_file_path", "")
-		) == true:
-			_on_FileDialog_files_selected([Conf.get_value("main", "last_file_path", "")])
+		var recent_files:Array = Conf.get_value("main","recent_files",[])
+		if recent_files.empty() == false:
+			if Dir.file_exists(
+				recent_files[0]
+			) == true:
+				_on_FileDialog_files_selected([recent_files[0]])
 
 func load_recent_files_list() -> void:
 	## mostrar archivos recientes
@@ -163,6 +165,7 @@ func add_translation_panel(
 	
 	TransConf.load(extra_data_path)
 
+	TransInstance.connect("deepl_open_link_requested", self, "_on_deepl_open_link_requested")
 	TransInstance.connect("translate_requested", self, "_on_Translation_translate_requested")
 	TransInstance.connect("text_updated", self, "_on_Translation_text_updated")
 	TransInstance.connect("edit_requested", self, "_on_Translation_edit_requested")
@@ -376,9 +379,6 @@ func _on_OpenedFilesList_item_selected(index: int) -> void:
 		and _langs.size() > 1
 	):
 		get_node("%TransLangItemList").select(1)
-	
-	Conf.set_value("main", "last_file_path", get_opened_file())
-	Conf.save(_self_data_folder_path+"/translation_manager_conf.ini")
 
 	## cargar traducciones
 	_on_LangItemList_item_selected(0)
@@ -389,6 +389,8 @@ func _on_OpenedFilesList_item_selected(index: int) -> void:
 ## esto hace perder cualquier cambio no gaurdado
 ## cargar paneles de traduccion
 func _on_LangItemList_item_selected(_index: int) -> void:
+	
+	clear_search()
 
 	get_node("%LblCurrentFTitle").text = get_node("%LblCurrentFTitle").text.replace("(*)","")
 	
@@ -407,6 +409,18 @@ func _on_LangItemList_item_selected(_index: int) -> void:
 			_translations[t_key][selected_lang_ref],
 			_translations[t_key][selected_lang_trans]
 		)
+
+## se solicito abrir web traduccion
+func _on_deepl_open_link_requested(TransNodeName:String) -> void:
+	var TranslationObj = get_node("%VBxTranslations").get_node(TransNodeName)
+	
+	var url:String = "https://deepl.com/translator#%s/%s/%s" % [
+		get_selected_lang("ref").http_escape(),
+		get_selected_lang("trans").http_escape(),
+		TranslationObj.orig_txt.http_escape(),
+	]
+	OS.shell_open(url)
+
 
 ## se solicitó traduccion
 func _on_Translation_translate_requested(TransNodeName:String, text_to_trans:String) -> void:

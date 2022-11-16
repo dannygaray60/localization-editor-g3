@@ -86,11 +86,11 @@ func _key_str_txt_changed(txt:String) -> void:
 func _on_CheckBoxRevision_toggled(button_pressed: bool) -> void:
 	need_revision = button_pressed
 	if need_revision == true:
-		$IconNormal.visible = false
-		$IconAlert.visible = true
+		$ButtonCopyKey/IconNormal.visible = false
+		$ButtonCopyKey/IconAlert.visible = true
 	else:
-		$IconNormal.visible = true
-		$IconAlert.visible = false
+		$ButtonCopyKey/IconNormal.visible = true
+		$ButtonCopyKey/IconAlert.visible = false
 	
 	if _is_ready_for_emit_signals == true:
 		emit_signal("need_revision_check_pressed", key_str, need_revision)
@@ -128,3 +128,7 @@ func _on_BtnTranslate_pressed() -> void:
 
 func _on_BtnTranslateDeepL_pressed() -> void:
 	emit_signal("deepl_open_link_requested", name)
+
+
+func _on_ButtonCopyKey_pressed() -> void:
+	OS.set_clipboard(key_str)

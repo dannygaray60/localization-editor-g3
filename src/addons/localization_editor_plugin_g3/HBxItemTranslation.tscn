@@ -18,23 +18,31 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="IconNormal" type="TextureRect" parent="."]
-margin_right = 25.0
-margin_bottom = 95.0
+[node name="ButtonCopyKey" type="Button" parent="."]
+margin_top = 31.0
+margin_right = 32.0
+margin_bottom = 63.0
+rect_min_size = Vector2( 32, 32 )
+focus_mode = 0
+mouse_default_cursor_shape = 2
+size_flags_vertical = 4
+
+[node name="IconNormal" type="TextureRect" parent="ButtonCopyKey"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_min_size = Vector2( 25, 0 )
 texture = ExtResource( 4 )
 stretch_mode = 4
 
-[node name="IconAlert" type="TextureRect" parent="."]
-visible = false
-margin_right = 25.0
-margin_bottom = 95.0
+[node name="IconAlert" type="TextureRect" parent="ButtonCopyKey"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_min_size = Vector2( 25, 0 )
 texture = ExtResource( 1 )
 stretch_mode = 4
 
 [node name="VBxString1" type="VBoxContainer" parent="."]
-margin_left = 35.0
+margin_left = 42.0
 margin_right = 545.0
 margin_bottom = 95.0
 size_flags_horizontal = 3
@@ -42,7 +50,7 @@ size_flags_horizontal = 3
 [node name="LblOriginalTxt" type="Label" parent="VBxString1"]
 unique_name_in_owner = true
 modulate = Color( 1, 1, 1, 0.611765 )
-margin_right = 510.0
+margin_right = 503.0
 margin_bottom = 23.0
 custom_fonts/font = ExtResource( 2 )
 text = "gdfgdfgdgd"
@@ -52,7 +60,7 @@ max_lines_visible = 1
 [node name="LineEditTranslation" type="LineEdit" parent="VBxString1"]
 unique_name_in_owner = true
 margin_top = 27.0
-margin_right = 510.0
+margin_right = 503.0
 margin_bottom = 60.0
 custom_fonts/font = ExtResource( 2 )
 placeholder_text = "Write a translation..."
@@ -60,7 +68,7 @@ caret_blink = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBxString1"]
 margin_top = 64.0
-margin_right = 510.0
+margin_right = 503.0
 margin_bottom = 92.0
 custom_constants/separation = 11
 
@@ -68,7 +76,7 @@ custom_constants/separation = 11
 unique_name_in_owner = true
 modulate = Color( 1, 1, 1, 0.47451 )
 margin_top = 7.0
-margin_right = 101.0
+margin_right = 94.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 text = "ItemTranslation"
@@ -76,8 +84,8 @@ clip_text = true
 
 [node name="BtnTranslate" type="Button" parent="VBxString1/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 112.0
-margin_right = 210.0
+margin_left = 105.0
+margin_right = 203.0
 margin_bottom = 28.0
 focus_mode = 0
 enabled_focus_mode = 0
@@ -86,8 +94,8 @@ icon = ExtResource( 5 )
 
 [node name="BtnTranslateDeepL" type="Button" parent="VBxString1/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 221.0
-margin_right = 313.0
+margin_left = 214.0
+margin_right = 306.0
 margin_bottom = 28.0
 focus_mode = 0
 enabled_focus_mode = 0
@@ -96,8 +104,8 @@ icon = ExtResource( 6 )
 
 [node name="CheckBoxRevision" type="CheckBox" parent="VBxString1/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 324.0
-margin_right = 444.0
+margin_left = 317.0
+margin_right = 437.0
 margin_bottom = 28.0
 focus_mode = 0
 enabled_focus_mode = 0
@@ -105,20 +113,21 @@ text = "Need Revision"
 
 [node name="BtnEdit" type="Button" parent="VBxString1/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 455.0
-margin_right = 491.0
+margin_left = 448.0
+margin_right = 484.0
 margin_bottom = 28.0
 focus_mode = 0
 enabled_focus_mode = 0
 text = "Edit"
 
 [node name="VSeparator" type="VSeparator" parent="VBxString1/HBoxContainer"]
-margin_left = 502.0
-margin_right = 510.0
+margin_left = 495.0
+margin_right = 503.0
 margin_bottom = 28.0
 custom_constants/separation = 8
 custom_styles/separator = SubResource( 1 )
 
+[connection signal="pressed" from="ButtonCopyKey" to="." method="_on_ButtonCopyKey_pressed"]
 [connection signal="focus_entered" from="VBxString1/LineEditTranslation" to="." method="_on_LineEditTranslation_focus_entered"]
 [connection signal="focus_exited" from="VBxString1/LineEditTranslation" to="." method="_on_LineEditTranslation_focus_exited"]
 [connection signal="text_changed" from="VBxString1/LineEditTranslation" to="." method="_on_LineEditTranslation_text_changed"]

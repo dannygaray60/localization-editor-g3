@@ -8,3 +8,11 @@ Features:
 - Designed to help translators.
 - Made with Godot Engine!
 - Free and Open Source!
+
+## How to use:
+https://ko-fi.com/Post/How-to-use-Localization-Editor-V7V7GF7GH
+
+## Download Standalone executable (windows, linux) here:
+https://dannygaray60.itch.io/localization-editor
+
+If you like this program, or have found it useful, please consider leaving me a donation on Ko-Fi!

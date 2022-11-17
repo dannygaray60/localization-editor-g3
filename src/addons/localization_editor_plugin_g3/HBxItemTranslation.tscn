@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://addons/localization_editor_plugin_g3/icons/icon-exclamation.svg" type="Texture" id=1]
 [ext_resource path="res://addons/localization_editor_plugin_g3/multilang_font.tres" type="DynamicFont" id=2]
@@ -6,6 +6,12 @@
 [ext_resource path="res://addons/localization_editor_plugin_g3/icons/icon-language.svg" type="Texture" id=4]
 [ext_resource path="res://addons/localization_editor_plugin_g3/icons/google-translate-svgrepo-com.svg" type="Texture" id=5]
 [ext_resource path="res://addons/localization_editor_plugin_g3/icons/DeepL_Logo_darkBlue_v2.svg" type="Texture" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -48,11 +54,23 @@ margin_right = 545.0
 margin_bottom = 95.0
 size_flags_horizontal = 3
 
-[node name="LblOriginalTxt" type="Label" parent="VBxString1"]
+[node name="LblOriginalTxt" type="LineEdit" parent="VBxString1"]
 unique_name_in_owner = true
-modulate = Color( 1, 1, 1, 0.611765 )
 margin_right = 503.0
 margin_bottom = 23.0
+custom_fonts/font = ExtResource( 2 )
+custom_styles/read_only = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+editable = false
+
+[node name="LblOriginalTxt0" type="Label" parent="VBxString1"]
+unique_name_in_owner = true
+visible = false
+modulate = Color( 1, 1, 1, 0.611765 )
+margin_top = 27.0
+margin_right = 503.0
+margin_bottom = 50.0
 custom_fonts/font = ExtResource( 2 )
 text = "gdfgdfgdgd"
 clip_text = true
@@ -77,7 +95,7 @@ custom_constants/separation = 11
 unique_name_in_owner = true
 modulate = Color( 1, 1, 1, 0.47451 )
 margin_top = 7.0
-margin_right = 158.0
+margin_right = 197.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 text = "ItemTranslation"
@@ -85,8 +103,8 @@ clip_text = true
 
 [node name="BtnTranslate" type="Button" parent="VBxString1/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 169.0
-margin_right = 267.0
+margin_left = 208.0
+margin_right = 306.0
 margin_bottom = 28.0
 focus_mode = 0
 enabled_focus_mode = 0
@@ -95,6 +113,7 @@ icon = ExtResource( 5 )
 
 [node name="BtnTranslateDeepL" type="Button" parent="VBxString1/HBoxContainer"]
 unique_name_in_owner = true
+visible = false
 margin_left = 278.0
 margin_right = 306.0
 margin_bottom = 28.0

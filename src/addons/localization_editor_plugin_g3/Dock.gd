@@ -428,12 +428,22 @@ func _on_LangItemList_item_selected(_index: int) -> void:
 func _on_deepl_open_link_requested(TransNodeName:String) -> void:
 	var TranslationObj = get_node("%VBxTranslations").get_node(TransNodeName)
 	
+	var from_lang:String = get_selected_lang("ref")
+	var to_lang:String = get_selected_lang("trans")
+	
+	## pasar de "en_US" a solo "es"
+	if "_" in from_lang:
+		from_lang = from_lang.split("_")[0]
+	if "_" in to_lang:
+		to_lang = to_lang.split("_")[0]
+	
 	var url:String = "https://deepl.com/translator#%s/%s/%s" % [
-		get_selected_lang("ref").http_escape(),
-		get_selected_lang("trans").http_escape(),
+		from_lang.http_escape(),
+		to_lang.http_escape(),
 		TranslationObj.orig_txt.http_escape(),
 	]
 	OS.shell_open(url)
+	print(url)
 
 
 ## se solicitó traduccion
@@ -984,3 +994,7 @@ func _on_BtnCloseFile_pressed() -> void:
 	else:
 		get_node("%OpenedFilesList").select(0)
 		_on_OpenedFilesList_item_selected(0)
+
+
+func _on_BtnOpenDeepL_pressed() -> void:
+	OS.shell_open("https://www.deepl.com/translator")

@@ -17,5 +17,5 @@ https://dannygaray60.itch.io/localization-editor
 
 If you like this program, or have found it useful, please consider leaving me a donation on Ko-Fi!
 
-[IMGA](https://raw.githubusercontent.com/dannygaray60/localization-editor-g3/main/static/resume_a.jpg)
-[IMGB](https://raw.githubusercontent.com/dannygaray60/localization-editor-g3/main/static/resume_b.jpg)
+![](https://raw.githubusercontent.com/dannygaray60/localization-editor-g3/main/static/resume_a.jpg)
+![](https://raw.githubusercontent.com/dannygaray60/localization-editor-g3/main/static/resume_b.jpg)

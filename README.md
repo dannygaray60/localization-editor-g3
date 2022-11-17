@@ -1,13 +1,17 @@
 # Localization Editor (Translation Tool for .csv files)
 Localization Editor is a tool for adding/editing/deleting translations in .csv files.
 
-Features:
+**Features:**
 - Add/Edit/Delete Translations using .csv file format.
 - Use it as a Standalone portable program, or as an addon for Godot Engine.
 - Add automatic translations using Google Translate API or use a shortcut for a DeepL website with the translation.
 - Designed to help translators.
 - Made with Godot Engine!
 - Free and Open Source!
+
+## How to install
+- As a Godot Plugin: copy `src/addons/localization_editor_plugin_g3` folder from source code to your addons folder
+- As a Executable: Download from itch-io and start .exe (Windows) file or .x86_64 (Linux)
 
 ## How to use:
 https://ko-fi.com/Post/How-to-use-Localization-Editor-V7V7GF7GH

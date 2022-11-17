@@ -1,6 +1,8 @@
 tool
 extends Control
 
+signal scan_files_requested
+
 const GodetteTexture = preload("res://addons/localization_editor_plugin_g3/godette.png")
 const GodetteWowTexture = preload("res://addons/localization_editor_plugin_g3/godette_wow.png")
 
@@ -23,6 +25,13 @@ var _current_path : String
 var _self_data_folder_path : String = "res://addons/localization_editor_plugin_g3"
 
 func _ready() -> void:
+	
+	get_node("%LblGodotEng").text = "Made with Godot Engine %d.%d.%d %s" % [
+		Engine.get_version_info()["major"],
+		Engine.get_version_info()["minor"],
+		Engine.get_version_info()["patch"],
+		Engine.get_version_info()["status"],
+	]
 	
 	get_node("%LblTextBottom").text = "%s v%s - %s" % [
 		get_plugin_info("name"),
@@ -610,11 +619,7 @@ func _on_BtnSaveFile_pressed() -> void:
 	if err == OK:
 		get_node("%LblCurrentFTitle").text = get_node("%LblCurrentFTitle").text.replace("(*)","")
 
-	if Engine.is_editor_hint() == true:
-		var ep = EditorPlugin.new()
-		ep.get_editor_interface().get_resource_filesystem().scan()
-		ep.free()
-		#get_opened_file()
+	emit_signal("scan_files_requested")
 
 ## cuando se cierra la ventana de preferencias
 func _on_Preferences_popup_hide() -> void:
@@ -671,6 +676,8 @@ func _on_CheckBoxSettingReopenFile_toggled(button_pressed: bool) -> void:
 func _on_LinkHowToUse_pressed() -> void:
 	##enviar a post de kofi
 	OS.shell_open("https://ko-fi.com/Post/How-to-use-Localization-Editor-V7V7GF7GH")
+func _on_LinkButtonItchio_pressed() -> void:
+	OS.shell_open("https://dannygaray60.itch.io/localization-editor")
 func _on_LinkButtonTwitter_pressed() -> void:
 	OS.shell_open("https://twitter.com/dannygaray60")
 func _on_LinkButtonGithub_pressed() -> void:

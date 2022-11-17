@@ -1,0 +1,166 @@
+keys,es,en
+YES,Sí,Yes
+NO,No,No
+USEITEM,Usar item,Use item
+CLOSE,Cerrar,Close
+CONTINUE,Continuar,Continue
+SKIP,Omitir,Skip
+PRESS,Presiona,Press
+TO_START,para comenzar,to start
+TO_CONTINUE,para continuar,to continue
+TAP_TO_START,Toca para comenzar,Tap to start
+RETURN,Regresar,Return
+MOVE,Mover,Move
+CHANGE,Cambiar,Change
+SELECT,Seleccionar,Select
+START,Iniciar,Start
+OPTIONS,Opciones,Options
+EXIT,Salir,Exit
+MAIN_MENU,Menú principal,Main menu
+GAMEPLAY,Jugabilidad,Gameplay
+VIDEO,Video,Video
+AUDIO,Audio,Audio
+GAMEPAD,Mando,Gamepad
+KEYBOARD,Teclado,Keyboard
+LANGUAGE,Idioma,Language
+PLAYER_AFTERIMAGE,Estela Fantasma del jugador,Player Afterimage
+MOVE_WITH_JOYSTICK,Mover personaje con joystick izquierdo,Move character with left joystick
+GAMEPAD_VIBRTN,Vibración de mando,Gamepad vibration
+SHAKE_CMR_DAMAGE,Sacudir cámara al recibir daño,Shake camera on damage
+ICONS_BTNS,Íconos de botones,Buttons icons
+CUSTOM_GAMEPAD_ICONS,Personalizar íconos de botones,Customize button icons
+QUALITY,Calidad,Quality
+VISUALIZATION_MODE,Modo de visualización,Display Mode
+WINDOW_RESOLUTION,Resolución en modo ventana,Window Resolution
+FPS_LIMIT,Límite de FPS (depuración),FPS Limit (debug)
+CRT_MODE,Filtro CRT,CRT filter
+SOUND_EFFECTS,Efectos de sonido,Sound effects
+MUSIC,Música,Music
+VOICES,Voces,Voices
+PRESS_NEW_KEY,Presiona la nueva tecla (teclado) o %s,Press new key (keyboard) or %s
+PRESS_NEW_BTN,Presiona el nuevo botón (mando) o %s,Press new button (gamepad) or %s
+PRESS_ESCAPE,Presiona [escape],Press [escape]
+PRESS_BACK_ANDROID,Presiona [atrás] (android),Press [back] (android)
+ACTION_UI_START,Pausa / Equipamiento,Pause / Equipment
+ACTION_UI_SELECT,Abrir mapa,Open map
+ACCEPT,Aceptar,Accept
+CANCEL,Cancelar,Cancel
+ACTION_UI_UP,Arriba,Up
+ACTION_UI_DOWN,Abajo,Down
+ACTION_UI_LEFT,Izquierda,Left
+ACTION_UI_RIGHT,Derecha,Right
+ACTION_UI_FOCUS_PREV,Retroceder / Esquivar,Backdash / Dodge
+ACTION_UI_FOCUS_NEXT,Circuito Elemental,Use Elemental Circuit
+ACTION_UI_A,Saltar / Aceptar,Jump / Accept
+ACTION_UI_B,Menú Rápido,Quick Menu
+ACTION_UI_X,Atacar / Cancelar,Attack / Cancel
+ACTION_UI_Y,Subarma,Subweapon
+SHADERS_DYNAMIC_LIGHTS,Shaders y luces dinámicas (Alto),Shaders and dynamic lights (High)
+SHADERS_SIMPLE_LIGHTS,Shaders y luces simples (Medio),Shaders and simple lights (Medium)
+SHADERS_NOT_SIMPLE_LIGHTS,Solo luces simples (Bajo),Just simple lights (Low)
+SOLVE_GAMEPAD_INCOMPATIBILITY,Solucionar problemas de compatibilidad,Fix compatibility issues
+WINDOW_BORDERLESS,Pantalla sin bordes,Borderless screen
+WINDOWED,Ventana,Window
+MONITOR_RES,Resolución del monitor,Monitor's Resolution
+GAMEPAD_CONNECTED,Un mando ha sido conectado,A Gamepad has been connected
+GAMEPAD_DISCONNECTED,El mando ha sido desconectado,Gamepad disconnected
+CONF_DEFAULT,Reestablecer configuración por defecto,Set settings by default
+CONF_BY_DEFAULT_DONE,Configuración por defecto realizado,Config by default done
+INPUT_DEVICE_INCORRECT,Se usó el dispositivo incorrecto,Input from incorrect device
+FULLSCREEN,Pantalla completa,Fullscreen
+SELECT_NEW_ICON_FOR_ACTION,Selecciona el nuevo ícono para:\n%s,Select new icon for:\n%s
+SELECT_ICON_TO_CHANGE,Selecciona el ícono a cambiar,Select the icon to be changed
+TEST_GAMEPAD,Probar Mando,Test Gamepad
+SAVE_MAPPING,Guardar mapeo,Save mapping
+MAPPING_UPDATED,Mapeo actualizado,Mapping updated
+SEE_HELP,Ver la ayuda,See help
+PASTE_HERE_MAPPING_STRING,Pegue aquí el string de mapeo,Paste here mapping string
+PRESS_ESC_OR_BACK_ANDROID_TO_END_TESTING,Presione [escape] (pc) / [atrás] (android) para terminar,Press [escape] (pc) / [back] (android) to end test
+DOWNLOAD_TOOL,Descargar herramienta,Download tool
+OPENING_LINK_WEB,Abriendo enlace web,Opening web link
+SHOW_MINIMAP,Mostrar Minimapa,Show Minimap
+MINIMAP_VISIBILITY,Visibilidad de Minimapa,Minimap visibility
+ELEMENTAL_CIRCUIT,Circuito Elemental,Elemental Circuit
+ACTION,Acción,Action
+ABILITY,Habilidad,Ability
+SUBWEAPON,Subarma,Subweapon
+HEALTH_RECOVERED,Salud Recuperada,Restored Health
+ALCHEMY,Alquimia,Alchemy
+INVENTORY,Inventario,Inventory
+EQUIP,Equipo,Equip
+TIME,Tiempo,Time
+AREA,Área,Area
+DEATHS,Muertes,Deaths
+SCS,sgs,scs
+ALLOY,Aleación,Alloy
+QUANTITY,Cantidad,Quantity
+AXE,Hacha,Axe
+SHURIKEN,Shuriken,Shuriken
+KNIFES,Cuchillos,Knifes
+TORNADO_BLADES,Tornado de Cuchillas,Tornado Blades
+HANDFAN,Abanico de mano,Hand Fan
+DOUBLE_JUMP,Salto Doble,Double Jump
+DODGE,Esquive,Dodge
+SLIDE,Deslizarse,Slide
+AIR_KICK,Patada Aérea,Dive Kick
+WALL_SLIDE,Deslizamiento en pared,Wall Slide
+SWING,Balanceo de látigo,Whip Swing
+BLADE_WHIP,Látigo Espada,Blade Whip
+WHIP_SPIN,Giro de látigo,Whip Spin
+WHIP_CRUSH,Ataque Crush,Whip Crush
+BLOOD_CONTROL,Control Sanguíneo,Blood Control
+MULTIPLE_EQUIPMENT,Equipamiento Múltiple,Multiple Equipment
+EMPTY_INVENTORY,Inventario Vacío,Empty Inventory
+STATUS,Estado,Status
+GOOD,Bueno,Good
+INJURED,Herido,Injured
+POISONED,Envenenado,Poisoned
+CURSED,Maldito,Cursed
+CENTER_MAP,Centrar,Center
+ADD_MARKER,Añadir Marcador,Add Marker
+EDIT_MARKER,Editar Marcador,Edit Marker
+QUICKSAVE_AND_EXIT,Guardado rápido y salir,Quick-save & Exit
+EXIT_N_GOTO_MMENU,Salir e ir al menú principal,Exit & go to Main menu
+MAP,Mapa,Map
+KEYSOBJECTS,Objetos Clave,Keys Objects
+NOTES,Anotaciones,Notes
+TREASURES,Tesoros,Treasures
+EMPTY_LIST,Lista Vacía,Empty List
+SAVE_MARKER,Guardar Marcador,Save Marker
+DELETE_MARKER,Eliminar Marcador,Delete Marker
+ENEMIES,Enemigos,Enemies
+ERASE,Borrar,Erase
+WRITE_NAME_FOR_SAVE,Escriba un nombre para el guardado...,Type a name for the save...
+GAME_SAVED,Partida Guardada,Game Saved
+QUICKSAVE_DETECTED,Archivo de guardado rápido encontrado,Quicksave file found
+ABOUT_QUICKSAVE_EXISTS,Al cargar partida se eliminará el archivo de guardado rápido,Loading game will remove the quick save file
+LOAD_QUICKSAVE,Cargar archivo de guardado rápido,Load quicksave file
+LOAD_GAME,Cargar partida (estatuas),Load game (statue)
+DELETE_DATA,Eliminar datos,Delete data
+SELECT_SLOT_TO_DELETE,Seleccione slot para eliminar,Select save slot to delete
+THIS_ACTION_CANT_BE_UNDO,Esta acción no podrá deshacerse,This action cannot be undone
+DELETE,Eliminar,Delete
+DATA_ERASE,Datos eliminados,Data deleted
+NEW_GAME,Nueva Partida,New Game
+DEVROOM,La sala de las almas torturadas,Hall of Tortured Souls
+SHOW_DEATH_COUNTER,Mostrar contador de muertes,Show death counter
+ATK_TITLE,Ataque,Attack
+DEF_TITLE,Defensa,Defense
+INT_TITLE,Inteligencia,Intelligence
+HP_TITLE,Salud,Health
+MP_TITLE,Mana,Mana
+SP_TITLE,Estamina,Stamina
+POTIONMAX_TITLE,Maximo de pociones,Potions Max
+OBJECT_OBTAINED,Objeto obtenido,Object obtained
+ELEMENT_OBTAINED,Elemento obtenido,Element obtained
+OBJECT_KEY_OBTAINED,Obj. Clave obtenido,Key Obj. obtained
+TREASURE_OBTAINED,Tesoro obtenido,Treasure obtained
+ACCESORY,Accesorio,Accesory
+EQUIP_TOP,Equipo Superior,Top Equip
+EQUIP_MID,Equipo Medio,Mid Equip
+EQUIP_BOTTOM,Equipo Inferior,Bottom Equip
+NONE,Ninguno,None
+USE,Usar,Use
+PREVIOUS,Anterior,Previous
+NEXT,Siguiente,Next
+SCREEN_FILTER,Filtro de pantalla,Screen Filter

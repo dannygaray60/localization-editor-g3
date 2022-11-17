@@ -21,8 +21,18 @@ _global_script_class_icons={
 [application]
 
 config/name="Localization Editor"
-run/main_scene="res://addons/localization_editor_plugin_g3/Dock.tscn"
-config/icon="res://icon.svg"
+run/main_scene="res://Main.tscn"
+boot_splash/image="res://icon.png"
+boot_splash/bg_color=Color( 0.12549, 0.145098, 0.192157, 1 )
+config/icon="res://icon.png"
+
+[audio]
+
+default_bus_layout=""
+
+[display]
+
+window/energy_saving/keep_screen_on=false
 
 [editor_plugins]
 

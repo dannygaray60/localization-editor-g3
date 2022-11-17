@@ -1,0 +1,6 @@
+keys,es,en
+MAKE_FAST_ATKS,Haz ataques rápidos con el botón [Ataque],Make fast attacks with the [Attack] button
+EVADE_WITH_BACKDASH,Evade ataques enemigos con [Esquivar],Evade enemy attacks with [Backdash].
+THROW_AXES,Arroja hachas con [Arriba] + [Subarma] (esto gastará maná).,Throw Axes with [Up] + [Subweapon] (it spends Mana)
+ALSO_TRHOW_ANOTHER_SUBWEAPONS,También puedes arrojar otras subarmas usando [DPad] + [Subarma],Also throw other subweapons using [Dpad] + [Subweapon]
+ABOUT_GODOT_ENGINE,"Godot es un motor de videojuegos 2D y 3D multiplataforma, libre y de código abierto, publicado bajo la Licencia MIT y desarrollado por la comunidad de Godot. El motor es funcional en sistemas Windows, OS X, Linux y BSD. Permite exportar los videojuegos creados a PC (Windows, OS X y Linux), teléfonos móviles (Android, iOS), y HTML5.","Godot is a cross-platform, free and open-source game engine released under the MIT license. It was initially developed by Argentine software developers Juan Linietsky and Ariel Manzur for several companies in Latin America prior to its public release. The development environment runs on multiple operating systems including Linux, BSDs, macOS, and Microsoft Windows. It is designed to create both 2D and 3D games targeting PC, mobile, and web platforms. It can also be used to create non game software, including editors."

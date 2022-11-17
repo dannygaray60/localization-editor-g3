@@ -8,6 +8,7 @@ var dock_instance
 
 func _enter_tree() -> void:
 	dock_instance = Dock.instance()
+	dock_instance.connect("scan_files_requested", self, "_on_scan_files_requested")
 	# Add the main panel to the editor's main viewport.
 	get_editor_interface().get_editor_viewport().add_child(dock_instance)
 	# Hide the main panel. Very much required.
@@ -29,3 +30,7 @@ func get_plugin_name():
 
 func get_plugin_icon():
 	return icon
+
+func _on_scan_files_requested() -> void:
+	if Engine.is_editor_hint() == true:
+		get_editor_interface().get_resource_filesystem().scan()

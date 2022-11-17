@@ -1,0 +1,46 @@
+Localization Editor es una herramienta para añadir/editar/eliminar traducciones guardadas en archivos .csv
+
+
+Traducciones en formato CSV
+El CSV es un archivo de texto que se forma separando textos utilizando un delimitador (la coma es el delimitador por defecto).
+En este ejemplo podemos ver que las palabras están separadas con una coma.
+La primera línea es la fila de los encabezados. La primera palabra es el nombre de la 1ra columna, luego seguirán los identificadores de idiomas.
+Las demás lineas del archivo serán las traducciones usando una palabra como ID (en general en mayúsculas). Por lo que si trasladamos a una tabla sería algo como esto:
+
+keys | es | en
+______________
+YES  | Sí | Yes
+________________
+CLOSE| Cerrar | Close
+
+Así que en una aplicación o videojuego para llamar a la traducción de texto se usa el ID del texto y el ID de idioma para obtener el texto traducido.
+
+¿Parece sencillo, verdad? Lo es, hasta que tienes que traducir cientos de palabras, incluso dialogos completos, descripciones etc. Fácilmente un archivo de traducción en CSV se puede volver un caos, por esta razón creé esta herramienta.
+
+
+¿Cómo instalar Location Editor?
+L.E puede ser utilizado abriendo el ejecutable que puede ser descargado desde itch.io. O incluso utilizarlo como un addon para Godot Engine. El programa es gratis y portable.
+
+¿Cómo usarlo?
+Esta es la pantalla de inicio:
+[img]
+Comencemos creando un archivo, ve a File->Create File y aparecerá la siguiente ventana:
+[img]
+Rellena todos los datos necesarios, y añade los idiomas utilizando la lista disponible.
+
+Pantalla de trabajo
+
+1: Filtro de Idioma de referencia e idioma a traducir.
+Elige el idioma desde el cual deseas traducir y luego el idioma para editar la traducción.
+2: El primer botón traducirá automaticamente el texto (usando Google Translate). El segundo botón abrirá la página web de DeepL para una traducción más precisa.
+3: Arriba verás la frase del idioma original, abajo escribe la traducción. Y abajo del campo verás cual es el ID del texto.
+4: Con este botón copiarás el ID del texto al portapapeles. El icono cambia dependiendo si la traducción fue marcada para revisión.
+5: Añade nuevas traducciones. Ingresando primero el ID del texto, luego el texto del idioma original (el que se está usando de referencia) y luego la traducción.
+[img]
+6: Edita más aspectos de la traducción con este botón, el cual abrirá esta ventana:
+	[img]
+	1: Puedes editar el ID del texto, o incluso eliminar la traducción (solo si el check está activado.
+	2: De igual manera también puedes editar el texto del idioma original.
+	3: Esta barra representa el % de diferencia de la cantidad de caracteres entre el texto del idioma original respecto a la traducción. Esto ayuda para traducciones de textos largos, y si quieres que la traducción no abarce más espacio visual que el idioma original, entonces trata que la barra esté lo menos llena posible.
+
+... Las demás opciones creo que no es necesario explicarlas :)

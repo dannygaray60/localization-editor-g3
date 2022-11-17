@@ -16,8 +16,6 @@ var trans_txt : String = "Text Translated" setget update_trans_txt
 var need_revision : bool = false
 var annotations : String ## no está siendo usado con relevancia...
 
-var _focused : bool = false
-
 ## flag para evitar emitir señales apenas el objeto se añade al tree
 var _is_ready_for_emit_signals : bool
 
@@ -36,17 +34,11 @@ func _ready() -> void:
 	_is_ready_for_emit_signals = true
 	
 	if focus_on_ready == true:
-		get_node("%LineEditTranslation").grab_focus()
+		focus_line_edit()
 		get_node("%LineEditTranslation").caret_position = get_node("%LineEditTranslation").text.length()
 
-#func _process(delta: float) -> void:
-#
-#	if _focused == false:
-#		return
-#
-#	if Input.is_action_just_pressed("ui_accept"):
-#		##TODO que al hacer enter pasar al siguiente lineedit
-#		pass
+func focus_line_edit() -> void:
+	get_node("%LineEditTranslation").grab_focus()
 
 func has_translation() -> bool:
 	return ! get_node("%LineEditTranslation").text.strip_edges().empty()
@@ -95,11 +87,11 @@ func _on_CheckBoxRevision_toggled(button_pressed: bool) -> void:
 	if _is_ready_for_emit_signals == true:
 		emit_signal("need_revision_check_pressed", key_str, need_revision)
 
-func _on_LineEditTranslation_focus_entered() -> void:
-	_focused = true
-func _on_LineEditTranslation_focus_exited() -> void:
-	_focused = false
 
+func _on_LineEditTranslation_focus_entered() -> void:
+	pass
+func _on_LineEditTranslation_focus_exited() -> void:
+	pass
 
 func _on_LineEditTranslation_text_changed(new_text: String) -> void:
 	
@@ -132,3 +124,13 @@ func _on_BtnTranslateDeepL_pressed() -> void:
 
 func _on_ButtonCopyKey_pressed() -> void:
 	OS.set_clipboard(key_str)
+
+## se presionó enter en el campo de texto
+## mandar focus al siguiente lineedit de traduccion
+func _on_LineEditTranslation_text_entered(_new_text: String) -> void:
+	var next_node:Control = get_node("%LineEditTranslation").find_next_valid_focus()
+	
+	if next_node.name == "LineEditTranslation":
+		next_node.grab_focus()
+	## mandar posicion cursor al final
+	next_node.caret_position = next_node.text.length()

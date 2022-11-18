@@ -96,7 +96,7 @@ custom_constants/separation = 11
 unique_name_in_owner = true
 modulate = Color( 1, 1, 1, 0.47451 )
 margin_top = 7.0
-margin_right = 197.0
+margin_right = 158.0
 margin_bottom = 21.0
 size_flags_horizontal = 3
 text = "ItemTranslation"
@@ -104,8 +104,8 @@ clip_text = true
 
 [node name="BtnTranslate" type="Button" parent="VBxString1/HBoxContainer"]
 unique_name_in_owner = true
-margin_left = 208.0
-margin_right = 306.0
+margin_left = 169.0
+margin_right = 267.0
 margin_bottom = 28.0
 focus_mode = 0
 enabled_focus_mode = 0
@@ -114,7 +114,6 @@ icon = ExtResource( 5 )
 
 [node name="BtnTranslateDeepL" type="Button" parent="VBxString1/HBoxContainer"]
 unique_name_in_owner = true
-visible = false
 margin_left = 278.0
 margin_right = 306.0
 margin_bottom = 28.0

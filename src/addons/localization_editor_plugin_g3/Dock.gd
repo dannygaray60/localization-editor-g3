@@ -82,6 +82,7 @@ func _ready() -> void:
 	get_node("%TxtSettingFCell").text = Conf.get_value("csv","f_cell","keys")
 	get_node("%TxtSettingDelimiter").text = Conf.get_value("csv","delimiter",",")
 	get_node("%CheckBoxSettingReopenFile").pressed = Conf.get_value("main","reopen_last_file",false)
+	get_node("%CheckBoxSettingHideDeepLButton").pressed = Conf.get_value("main","hide_deepl_button",false)
 
 	load_recent_files_list()
 
@@ -193,6 +194,10 @@ func add_translation_panel(
 	TransInstance.trans_txt = trans_txt
 	TransInstance.need_revision = TransConf.get_value(strkey, "need_rev", false)
 	TransInstance.annotations = TransConf.get_value(strkey, "annotations", "")
+	
+	TransInstance.hide_deepl_button(
+		Conf.get_value("main", "hide_deepl_button", false)
+	)
 
 	get_node("%VBxTranslations").call_deferred("add_child", TransInstance)
 
@@ -681,6 +686,8 @@ func _on_ApiTranslate_text_translated(
 ## se cambio el check de reabrir ultimo archivo abierto
 func _on_CheckBoxSettingReopenFile_toggled(button_pressed: bool) -> void:
 	Conf.set_value("main", "reopen_last_file", button_pressed)
+func _on_CheckBoxSettingHideDeepLButton_toggled(button_pressed: bool) -> void:
+	Conf.set_value("main", "hide_deepl_button", button_pressed)
 
 
 func _on_LinkHowToUse_pressed() -> void:

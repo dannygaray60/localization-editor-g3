@@ -37,6 +37,9 @@ func _ready() -> void:
 		focus_line_edit()
 		get_node("%LineEditTranslation").caret_position = get_node("%LineEditTranslation").text.length()
 
+func hide_deepl_button(val:bool) -> void:
+	get_node("%BtnTranslateDeepL").visible = val
+
 func focus_line_edit() -> void:
 	get_node("%LineEditTranslation").grab_focus()
 
